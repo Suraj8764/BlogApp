@@ -61,3 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
         navUl.classList.toggle('active');
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const logo = document.getElementById('logo');
+    const navLinks = document.getElementById('nav-links');
+  
+    logo.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  });
+  

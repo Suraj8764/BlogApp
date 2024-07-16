@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #534136;
@@ -66,6 +67,20 @@ nav .menu-toggle {
   display: none;
 }
 
+/* Hide nav-links and cart at specific breakpoints */
+@media (max-width: 480px), (max-width: 600px), (max-width: 768px), (max-width: 1024px) {
+  nav .nav-links, nav .cart {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  nav .nav-links.active {
+    display: flex;
+  }
+}
+
 .hero-section {
   display: flex;
   justify-content: center;
@@ -93,7 +108,7 @@ nav .menu-toggle {
 }
 
 .hero-content p {
-  font-size: 27px;
+  font-size: 45px;
   margin: 20px 0;
   color: #3f2e2b;
 }
@@ -114,16 +129,13 @@ nav .menu-toggle {
   background: #3f2e2b;
   color: white;
   position: relative;
+  text-align: center;
 }
 
 .our-story h2 {
-  text-align: center;
   font-family: "Pacifico", cursive;
   font-size: 36px;
   color: #ffaf3f;
-  position: absolute;
-  right: 2.5rem;
-  top: 30px;
 }
 
 .our-story .story-content {
@@ -153,8 +165,7 @@ nav .menu-toggle {
   text-decoration: none;
   margin-top: 10px;
   font-weight: bold;
-  position: relative;
-  top: 80px;
+  display: block;
 }
 
 .services {
@@ -218,8 +229,6 @@ nav .menu-toggle {
   font-family: "Pacifico", cursive;
   font-size: 36px;
   color: #ffaf3f;
-  position: relative;
-  bottom: 82px;
 }
 
 .offer-section .offer-text {
@@ -262,18 +271,23 @@ nav .menu-toggle {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .reserve-content img {
-  width: 700px;
+  width: 100%;
+  max-width: 700px;
   height: auto;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 .form-res {
   display: flex;
-  margin-right: 23rem;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 10px;
 }
 
 .reserve-content form {
@@ -281,7 +295,6 @@ nav .menu-toggle {
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  max-width: 400px;
 }
 
 .reserve-content form input,
@@ -496,12 +509,13 @@ p.animated-text {
   background-color: #5b4339;
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   text-align: left;
 }
 
 .blog-post h3 {
-  font-size: 24px;
+  font-size: 14px;
   color: #ffaf3f;
 }
 
@@ -509,6 +523,7 @@ p.animated-text {
   margin-top: 10px;
   font-size: 14px;
   line-height: 1.6;
+  flex-wrap: wrap;
 }
 
 .blog-post .more-link {
@@ -521,7 +536,7 @@ p.animated-text {
 
 .customer-reviews {
   text-align: center;
-  padding: 50px 20px;
+  padding: 30px 10px;
   background: #3f2e2b;
   color: white;
 }
@@ -536,14 +551,17 @@ p.animated-text {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 .review {
-  margin: 10px;
-  padding: 20px;
-  background-color: #3f2e2b;
-  border: 1px solid #4a3a31;
-  width: 200px;
+  margin: 5px;
+  padding: 10px;
+  background-color: #5b4339;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 300px;
+  text-align: left;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -597,10 +615,12 @@ footer {
   display: flex;
   justify-content: space-around;
   padding: 20px 0;
+  flex-wrap: wrap;
 }
 
 .footer-section {
-  width: 30%;
+  flex: 1;
+  margin: 10px;
 }
 
 .footer-section h3 {
@@ -652,29 +672,19 @@ footer {
 }
 
 /* Media Queries */
-/* Media Queries */
-/* Media Queries */
 @media (max-width: 1200px) {
   .services-list,
   .menu-content,
   .blog-posts,
   .reviews {
-    flex-direction: row;
-    flex-wrap: nowrap; 
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-section {
     padding: 30px 20px;
     height: 80vh;
-    display: flex;
-    flex-wrap:nowrap wrap; 
   }
-
-  .carousel-inner {
-    flex-direction: row;
-    flex-wrap: nowrap; 
-  }
-
 
   .hero-content h1 {
     font-size: 2rem;
@@ -684,23 +694,41 @@ footer {
     font-size: 1rem;
   }
 
-  .our-story .story-content p {
-    font-size: 1rem; 
+  .our-story .story-content {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .offer-section .offer-text {
-    font-size: 1.5rem; 
+  .offer-section .offer-content {
+    flex-direction: column;
+    text-align: center;
   }
 
   .popular-menu .menu-item .name {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
-  .blog-post h3 {
-    font-size: 1.5rem; 
+  .blog-post,
+  .review {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+  }
+
+  .reserve-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reserve-content img {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .form-res {
+    margin-right: 0;
   }
 }
-
 
 @media (max-width: 1024px) {
   .our-story .story-content,
@@ -708,12 +736,21 @@ footer {
   .reserve-content {
     flex-direction: column;
     text-align: center;
+    align-items: center;
   }
 
   .our-story .story-content img,
   .offer-section img,
   .reserve-content img {
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
+  }
+
+  .services-list,
+  .menu-content,
+  .blog-posts,
+  .reviews {
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-section {
@@ -723,28 +760,26 @@ footer {
 }
 
 @media (max-width: 768px) {
+  .popular-menu .menu-item .name {
+    font-size: 20px;
+  }
+
   nav ul {
-    flex-direction: row;
+    display: none;
+    flex-direction: column;
+    align-items: center;
     background-color: #4a3a31;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
-   
   }
 
   nav ul.active {
     display: flex;
   }
 
-  nav ul li {
-    padding: 5px 10px;
-    text-align: center;
-    font-size: 13px;
-    flex-direction: row;
-  }
-
-  nav .menu-toggle {
+  .nav .menu-toggle {
     display: block;
     cursor: pointer;
   }
@@ -757,29 +792,21 @@ footer {
   .our-story .story-content {
     flex-direction: column;
     text-align: center;
-    font-size: 23px;
-  }
-
-  .our-story .story-content img {
-    margin: 0 auto 20px;
-
   }
 
   .offer-section .offer-content {
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
-  }
-
-  .offer-section img {
-    margin: 20px auto;
   }
 
   .reserve-content {
     flex-direction: column;
+    align-items: center;
   }
 
   .reserve-content img {
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
+    width: 100%;
   }
 
   .reserve-content form {
@@ -790,9 +817,16 @@ footer {
     flex-direction: column;
   }
 }
+
 @media (max-width: 600px) {
-  .nav ul {
-    flex-direction: row;
+  .popular-menu .menu-item .name {
+    font-size: 20px;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
     background-color: #4a3a31;
     position: absolute;
     top: 60px;
@@ -800,8 +834,13 @@ footer {
     width: 100%;
   }
 
-  .hero-content h1 {
-    font-size: 26px;
+  nav ul.active {
+    display: flex;
+  }
+
+  .nav .menu-toggle {
+    display: block;
+    cursor: pointer;
   }
 
   .services-list,
@@ -809,7 +848,11 @@ footer {
   .blog-posts,
   .reviews {
     flex-direction: column;
-    flex-wrap: nowrap; /* Changed from wrap to nowrap */
+    align-items: center;
+  }
+
+  .hero-content h1 {
+    font-size: 26px;
   }
 
   .hero-content p {
@@ -824,10 +867,6 @@ footer {
     font-size: 20px;
   }
 
-  .popular-menu .menu-item .name {
-    font-size: 20px;
-  }
-
   .blog-post h3 {
     font-size: 20px;
   }
@@ -841,16 +880,55 @@ footer {
   .footer-content {
     flex-direction: column;
   }
+
+  .blog-post,
+  .review {
+    max-width: none;
+    width: 100%;
+    margin: 0 20px;
+  }
 }
 
-
 @media (max-width: 480px) {
+  .services-list,
+  .menu-content,
+  .blog-posts,
+  .reviews {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4a3a31;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    padding: 5px 10px;
+    text-align: center;
+  }
+
   .hero-content h1 {
-    font-size: 28px;
+    font-size: 10px;
   }
 
   .hero-content p {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .our-story .story-content p {
@@ -861,12 +939,8 @@ footer {
     font-size: 18px;
   }
 
-  .popular-menu .menu-item .name {
-    font-size: 18px;
-  }
-
   .blog-post h3 {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .footer-section {
@@ -877,6 +951,13 @@ footer {
 
   .footer-content {
     flex-direction: column;
+  }
+
+  .blog-post,
+  .review {
+    max-width: none;
+    width: 100%;
+    margin: 0 20px;
   }
 }
 
@@ -892,22 +973,14 @@ nav .menu-toggle {
 
   nav ul {
     display: none;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     background-color: #4a3a31;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
-    z-index: 999;
   }
-  .services-list,
-  .menu-content,
-  .blog-posts,
-  .reviews {
-    flex-direction: row;
-    flex-wrap: nowrap; 
-  }
-
 
   nav ul.active {
     display: flex;
@@ -916,5 +989,19 @@ nav .menu-toggle {
   nav ul li {
     padding: 10px 20px;
     text-align: center;
+  }
+
+  .reserve-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reserve-content img {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+
+  .form-res {
+    margin-right: 0;
   }
 }
